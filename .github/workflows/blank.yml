@@ -11,5 +11,6 @@ jobs:
       - name: Run
         env:
           RUNNER_ARCH: ${{ runner.arch }}
+          AUTHKEY: ${{ secrets.TS_AUTH_KEY }}
         run: |
           bash run.sh && exit 0
