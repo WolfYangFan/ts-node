@@ -4,13 +4,11 @@ echo "白嫖 Tailscale + Github Action ≈ VPN(Azure)
 作者: HackPig520
 版本: v0.0.1
 ==============================="
-
-AUTH_KEY="tskey-auth-kBHiLs1CNTRL-GeVuYmWDMiczypohQj6NicMaPP3YhejG"
 echo -e "Starting...
 Tailscale Auth Key: $AUTH_KEY
 "
 VERSION="1.44.0"
-sleep 3
+HOSTNAME="ga-$(cat /etc/hostname)"
 if [ $RUNNER_ARCH = "ARM64" ]; then
   TS_ARCH="arm64"
 elif [ $RUNNER_ARCH = "ARM" ]; then
@@ -41,9 +39,6 @@ sudo mv "${TSPATH}/tailscale" "${TSPATH}/tailscaled" /usr/bin
 # Pull up `tailscaled`
 sudo -E tailscaled --state=.ts.state 2>~/tailscaled.log &
 # Connect to Tailscale
-if [ -z "${HOSTNAME}" ]; then
-  HOSTNAME="ga-$(cat /etc/hostname)"
-fi
 sudo -E tailscale up --hostname=${HOSTNAME} --auth-key $AUTH_KEY --advertise-exit-node
 sudo tailscale ip > IPS.txt
 echo "==============================="
