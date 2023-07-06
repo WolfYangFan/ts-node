@@ -11,13 +11,13 @@ Tailscale Auth Key: $AUTH_KEY
 "
 VERSION="1.44.0"
 sleep 3
-if [ ${{ runner.arch }} = "ARM64" ]; then
+if [ $RUNNER_ARCH = "ARM64" ]; then
   TS_ARCH="arm64"
-elif [ ${{ runner.arch }} = "ARM" ]; then
+elif [ $RUNNER_ARCH = "ARM" ]; then
   TS_ARCH="arm"
-elif [ ${{ runner.arch }} = "X86" ]; then
+elif [ $RUNNER_ARCH = "X86" ]; then
   TS_ARCH="386"
-elif [ ${{ runner.arch }} = "X64" ]; then
+elif [ $RUNNER_ARCH = "X64" ]; then
   TS_ARCH="amd64"
 else
   TS_ARCH="amd64"
