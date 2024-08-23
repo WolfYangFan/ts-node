@@ -2,12 +2,12 @@ echo "白嫖 Tailscale + Github Action ≈ VPN(Azure)
 速度很快，可以隐藏IP，上Google，看YouTube！
 ===============================
 作者: HackPig520
-版本: v0.0.1
+版本: v0.1.0
 ==============================="
 echo -e "Starting...
 Tailscale Auth Key: $AUTH_KEY
 "
-VERSION="1.44.0"
+VERSION="1.72.1"
 HOSTNAME="ga-$(cat /etc/hostname)"
 if [ $RUNNER_ARCH = "ARM64" ]; then
   TS_ARCH="arm64"
