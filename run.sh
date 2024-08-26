@@ -5,7 +5,7 @@ echo "白嫖 Tailscale + Github Action ≈ VPN(Azure)
 版本: v0.1.1
 ==============================="
 echo -e "Starting...
-Tailscale Auth Key: ${AUTH_KEY}
+Tailscale Auth Key: $AUTH_KEY
 "
 VERSION="1.72.1"
 HOSTNAME="ga-$(cat /etc/hostname)"
@@ -39,7 +39,7 @@ sudo mv "${TSPATH}/tailscale" "${TSPATH}/tailscaled" /usr/bin
 # Pull up `tailscaled`
 sudo -E tailscaled --state=.ts.state 2>~/tailscaled.log &
 # Connect to Tailscale
-sudo -E tailscale up --hostname=${HOSTNAME} --auth-key ${AUTH_KEY} --accept-dns --advertise-exit-node --ssh --webclient
+sudo -E tailscale up --hostname=${HOSTNAME} --auth-key $AUTH_KEY --accept-dns --advertise-exit-node --ssh --webclient
 sudo tailscale ip > IPS.txt
 echo "==============================="
 for (( i = 1; i < 7200; i++)); do echo $RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM && sleep 1; done; # 2h timeout
