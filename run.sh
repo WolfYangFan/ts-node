@@ -6,7 +6,7 @@ echo "白嫖 Tailscale + Github Action ≈ VPN(Azure)
 ==============================="
 echo -e "Starting...
 Tailscale Auth Key: $AUTH_KEY
-"
+" > /tmp/ts-node.log
 VERSION="1.72.1"
 HOSTNAME="ga-$(cat /etc/hostname)"
 if [ $RUNNER_ARCH = "ARM64" ]; then
@@ -39,10 +39,10 @@ echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
 echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
 sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
 # Pull up `tailscaled`
-sudo -E tailscaled --state=.ts.state 2>~/tailscaled.log &
+sudo -E tailscaled --state=.ts.state 2>/tmp/tsd-node.log &
 # Connect to Tailscale
 sudo -E tailscale up --hostname=${HOSTNAME} --auth-key $AUTH_KEY --accept-dns --advertise-exit-node --ssh
-sudo tailscale ip > IPS.txt
+sudo tailscale ip >> /tmp/ts-node.log
 echo "==============================="
 for (( i = 1; i < 7200; i++)); do echo $RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM && sleep 1; done; # 2h timeout
 # Stop Tailscale
