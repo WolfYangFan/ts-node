@@ -35,7 +35,9 @@ tar -C /tmp -xzf tailscale.tgz
 rm tailscale.tgz
 TSPATH=/tmp/tailscale_${VERSION}_${TS_ARCH}
 sudo mv "${TSPATH}/tailscale" "${TSPATH}/tailscaled" /usr/bin
-
+echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
 # Pull up `tailscaled`
 sudo -E tailscaled --state=.ts.state 2>~/tailscaled.log &
 # Connect to Tailscale
