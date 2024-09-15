@@ -7,7 +7,7 @@ echo "白嫖 Tailscale + Github Action ≈ VPN(Azure)
 echo -e "Starting...
 Tailscale Auth Key: $AUTH_KEY
 " > /tmp/ts-node.log
-VERSION="1.72.1"
+VERSION="1.74.0"
 HOSTNAME="ga-$(cat /etc/hostname)"
 if [ $RUNNER_ARCH = "ARM64" ]; then
   TS_ARCH="arm64"
