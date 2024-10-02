@@ -1,8 +1,7 @@
-echo "白嫖 Tailscale + Github Action ≈ VPN(Azure)
-速度很快，可以隐藏IP，上Google，看YouTube！
+echo "白嫖 Tailscale + Github Action
 ===============================
-作者: HackPig520
-版本: v0.1.1
+作者: WolfYangFan
+版本: v0.1.2
 ==============================="
 echo -e "Starting...
 Tailscale Auth Key: $AUTH_KEY
